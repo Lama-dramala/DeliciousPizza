@@ -1,0 +1,153 @@
+@import "variables.scss";
+
+.sorting {
+  @include flex(center, space-between);
+  margin: 40px 0;
+
+  &_categories {
+    display: flex;
+
+    & li {
+      padding: 14px 25px;
+      margin-right: 10px;
+      border-radius: 30px;
+      font-weight: bold;
+      background-color: #f9f9f9;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.active {
+        background-color: #282828;
+        color: white;
+      }
+    }
+  }
+
+  &_dropdown {
+    font-weight: bold;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6.5px;
+      left: -15.3px;
+      // display: block;
+      width: 10px;
+      height: 5.6px;
+      background-image: url(../../public/img/triangle.svg);
+    }
+
+    &_current-option {
+      margin-left: 8px;
+      @include font(unset, #fe5f1e, normal);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    &_options {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      padding: 13px 0;
+      font-weight: normal;
+      border-radius: 10px;
+      box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
+      z-index: 2;
+
+      & li {
+        padding: 10px 22px 10px 14px;
+        cursor: pointer;
+
+        &:hover {
+          @include font(unset, #fe5f1e, bold);
+          background-color: rgba(254, 95, 30, 0.05);
+        }
+      }
+    }
+  }
+}
+
+.search {
+  width: fit-content;
+  margin-bottom: 40px;
+  position: relative;
+
+  & img {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+  }
+
+  &_input {
+    width: 300px;
+    padding: 10px 45px;
+    box-sizing: border-box;
+    border: 1px solid #c5c5c5;
+    border-radius: 10px;
+  }
+
+  &_close-btn {
+    position: absolute;
+    rotate: 45deg;
+    font-size: 30px;
+    top: 1px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 1130px) {
+  .sorting {
+    flex-direction: column;
+
+    &_categories {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+@media (max-width: 870px) {
+  .sorting_categories {
+    @include grid(repeat(3, 1fr), 20px 20px);
+
+    & li {
+      // width: 170px;
+      // box-sizing: border-box;
+      margin-right: 0;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .sorting_categories {
+    grid-template-columns: repeat(2, 1fr);
+
+    & li {
+      padding: 10px;
+      border-radius: 15px;
+    }
+  }
+
+  .search {
+    margin: 0 auto 40px;
+  }
+}
+
+@media (max-width: 350px) {
+  .sorting {
+    font-size: 14px;
+
+    &_categories {
+      gap: 20px 10px;
+    }
+  }
+
+  .search_input {
+    width: 200px;
+  }
+}

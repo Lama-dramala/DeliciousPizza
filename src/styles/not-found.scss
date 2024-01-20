@@ -1,0 +1,24 @@
+@import "variables.scss";
+
+.not-found {
+  @extend %flex-column;
+  margin: 100px auto;
+  text-align: center;
+
+  &_h2 {
+    font-size: 32px;
+    font-family: "ProximaNova_bold";
+    margin-bottom: 30px;
+  }
+
+  &_content {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  &_return {
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

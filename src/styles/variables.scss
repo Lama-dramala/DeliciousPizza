@@ -1,0 +1,22 @@
+@mixin flex($align, $justify: unset, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+@mixin font($size, $color, $weight: normal, $family: unset) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  font-family: $family;
+}
+@mixin grid($columns, $gap, $rows: unset) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}

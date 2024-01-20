@@ -1,0 +1,26 @@
+#root {
+  padding: 45px 20px;
+  background-color: #ffdf8c;
+}
+.App {
+  padding: 50px;
+  overflow: hidden;
+  background-color: #fff;
+  font-family: "ProximaNova";
+  border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+  .App {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  #root {
+    padding: 20px 10px;
+  }
+  .App {
+    padding: 15px;
+  }
+}

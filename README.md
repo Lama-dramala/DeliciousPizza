@@ -1,5 +1,4 @@
-delicious-pizza-beta.vercel.app
-
+[Ссылка на сайт](https://delicious-pizza-beta.vercel.app/)
 
 # Getting Started with Create React App
 

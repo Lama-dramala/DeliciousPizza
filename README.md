@@ -17,7 +17,7 @@
 - Redux Toolkit
 - React Router v6
 - Prettier (форматирование кода)
-- CSS-Modules / SCSS (стилизация)
+- SCSS (стилизация)
 - React Content Loader (скелетон)
 
 ## Письма с угрозами скорейшей расправы слать сюда

@@ -25,7 +25,7 @@ export default function Catalog({ pizzaList, onLoad }) {
             .filter((pizza) => pizza.name.toUpperCase().includes(searchValue.toUpperCase().trim()))
             .map((pizza) => <Pizza props={pizza} key={pizza.id} />)
         ) : (
-          <span> Ничего не найдено </span>
+          <span className="catalog_empty"> Ничего не найдено </span>
         )}
       </div>
     </div>

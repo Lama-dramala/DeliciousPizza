@@ -10,7 +10,7 @@ export default function CartItem({ props }) {
       <div className="cart_items_pizza_content-wrap">
         <img src={props.img} alt="Изображение пиццы" className="cart_items_pizza_img" />
         <div className="cart_items_pizza_info">
-          <h6 className="cart_items_pizza_title">{props.name}</h6>
+          <h4 className="cart_items_pizza_title">{props.name}</h4>
           <span className="cart_items_pizza_properties">
             {(props.type == 0 ? "тонкое" : "традиционное") + " тесто"}, {props.size} см.
           </span>

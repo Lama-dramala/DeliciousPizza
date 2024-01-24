@@ -43,59 +43,73 @@ export default function Sorting({ activeCategory, setActiveCategory, activeSort,
     };
   }, []);
 
+  // Показ и скрытие сортировки и поиска
+  const [isSortHidden, setIsSortHidden] = useState(true);
+  function toggleSort() {
+    setIsSortHidden(!isSortHidden);
+  }
+
   return (
     <div>
-      <div className="sorting">
-        <ul className="sorting_categories">
-          {categories.map((category) => (
-            <li
-              className={activeCategory == category.id ? "active" : ""}
-              onClick={() => setActiveCategory(category.id)}
-              key={category.id}
+      <div className="expend-sort">
+        <span>Сортировка и поиск</span>
+        <button onClick={toggleSort}>
+          <img src="img/burger-menu.png" alt="Показать опции сортировки" />
+        </button>
+      </div>
+      <div id="sortingAndSearch" className={isSortHidden ? "hidden" : ""}>
+        <div className="sorting">
+          <ul className="sorting_categories">
+            {categories.map((category) => (
+              <li
+                className={activeCategory == category.id ? "active" : ""}
+                onClick={() => setActiveCategory(category.id)}
+                key={category.id}
+              >
+                {category.name}
+              </li>
+            ))}
+          </ul>
+          <div ref={sortDropdownRef} className="sorting_dropdown">
+            Сортировать по:
+            <span
+              className="sorting_dropdown_current-option"
+              onClick={() => setOptionsIsActive(!optionsIsActive)}
             >
-              {category.name}
-            </li>
-          ))}
-        </ul>
-        <div ref={sortDropdownRef} className="sorting_dropdown">
-          Сортировать по:
-          <span
-            className="sorting_dropdown_current-option"
-            onClick={() => setOptionsIsActive(!optionsIsActive)}
-          >
-            {activeSort.title}
-          </span>
-          {optionsIsActive && (
-            <ul className="sorting_dropdown_options">
-              {options.map((option) => (
-                <li
-                  onClick={() => {
-                    setActiveSort(option);
-                    setOptionsIsActive(false);
-                  }}
-                  key={option.id}
-                >
-                  {option.title}
-                </li>
-              ))}
-            </ul>
+              {activeSort.title}
+            </span>
+            {optionsIsActive && (
+              <ul className="sorting_dropdown_options">
+                {options.map((option) => (
+                  <li
+                    onClick={() => {
+                      setActiveSort(option);
+                      setOptionsIsActive(false);
+                    }}
+                    key={option.id}
+                  >
+                    {option.title}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        <div className="search">
+          <img src="img/search.svg" alt="" />
+          <input
+            onChange={(e) => dispatch(setSearch(e.target.value))}
+            value={searchValue}
+            className="search_input"
+            type="text"
+            placeholder="Поиск..."
+          />
+          {searchValue && (
+            <button onClick={() => dispatch(setSearch(""))} className="search_close-btn">
+              +
+            </button>
           )}
         </div>
-      </div>
-      <div className="search">
-        <img src="img/search.svg" alt="" />
-        <input
-          onChange={(e) => dispatch(setSearch(e.target.value))}
-          value={searchValue}
-          className="search_input"
-          type="text"
-          placeholder="Поиск..."
-        />
-        {searchValue && (
-          <button onClick={() => dispatch(setSearch(""))} className="search_close-btn">
-            +
-          </button>
-        )}
       </div>
     </div>
   );

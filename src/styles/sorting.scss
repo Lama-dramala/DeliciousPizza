@@ -100,6 +100,10 @@
   }
 }
 
+.expend-sort {
+  display: none;
+}
+
 @media (max-width: 1130px) {
   .sorting {
     flex-direction: column;
@@ -121,6 +125,26 @@
       text-align: center;
     }
   }
+  #sortingAndSearch.hidden {
+    display: none !important;
+  }
+  .expend-sort {
+    @include flex(center);
+    margin: 20px auto;
+    width: fit-content;
+    font-size: 20px;
+
+    & img {
+      width: 50px;
+      margin: 5px 0 0 10px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .sorting {
+    margin: 20px 0;
+  }
 }
 
 @media (max-width: 500px) {
@@ -135,6 +159,11 @@
 
   .search {
     margin: 0 auto 40px;
+  }
+
+  .expend-sort {
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 }
 

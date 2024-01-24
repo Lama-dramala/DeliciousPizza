@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,6 +9,16 @@ export default function Cart() {
   // Достаём данные из хранилища Redux
   const { cartItems, cartItemsNumber, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const [checkoutMessage, setCheckoutMessage] = useState(false);
+  const [checkoutNumber, setCheckoutNumber] = useState(0);
+  function checkout() {
+    setCheckoutNumber(totalPrice);
+    setCheckoutMessage(true);
+    dispatch(clearItems());
+    window.scrollTo(0, 200);
+    setTimeout(() => setCheckoutMessage(false), 5000);
+  }
 
   return (
     <div>
@@ -45,7 +55,7 @@ export default function Cart() {
               <img src="img/arrow.svg" alt="" />
               <span> Вернуться назад</span>
             </Link>
-            <button className="cart_bottom_buy">
+            <button className="cart_bottom_buy" onClick={checkout}>
               <span> Оплатить сейчас</span>
             </button>
           </div>
@@ -63,6 +73,9 @@ export default function Cart() {
           </Link>
         </div>
       )}
+      <span className={"cart_notification" + (checkoutMessage ? "" : " hidden")}>
+        Ваш заказ общей стоимостью {checkoutNumber} ₽ находится в обработке и будет выполнен в течении часа
+      </span>
     </div>
   );
 }

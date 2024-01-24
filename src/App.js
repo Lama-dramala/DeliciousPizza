@@ -1,9 +1,3 @@
-// Сделать загрузочные скелетоны для корзины
-// Добавить функционал кнопке "Оплатить сейчас". Думаю хватит очистки корзины и уведомления о покупке
-// Приклеить шапку к верху страницы
-// Адаптив
-// Можно ли остаток в гридах выровнять по центру?
-// Прятать весь блок сортировки в меню
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -48,11 +42,14 @@ function App() {
   }, [activeCategory, activeSort]);
 
   // Инициализация массива корзины из данных localStorage
+  const [cartIsLoading, setCartIsLoading] = useState(true);
   useEffect(() => {
+    setCartIsLoading(true);
     const cartItems = JSON.parse(localStorage.getItem("cartItems"));
     if (cartItems) {
       dispatch(InitializeCartItems(cartItems));
     }
+    setCartIsLoading(false);
   }, []);
 
   return (
@@ -73,7 +70,10 @@ function App() {
             </div>
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={cartIsLoading ? <div className="cart_loading">Загрузка...</div> : <Cart />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

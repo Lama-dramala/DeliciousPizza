@@ -56,3 +56,14 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding-bottom: 15px;
+    // border-bottom: 0;
+
+    &_site-logo_text {
+      display: none;
+    }
+  }
+}

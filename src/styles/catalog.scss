@@ -97,10 +97,15 @@
   }
 }
 @media (max-width: 400px) {
-  .catalog_pizza {
-    width: 250px;
-  }
-  .catalog_pizza img {
-    width: 200px;
+  .catalog {
+    gap: 30px;
+
+    &_pizza {
+      width: 250px;
+
+      & img {
+        width: 200px;
+      }
+    }
   }
 }

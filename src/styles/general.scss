@@ -3,7 +3,9 @@
   background-color: #ffdf8c;
 }
 .App {
+  min-height: calc(100vh - 90px);
   padding: 50px;
+  box-sizing: border-box;
   overflow: hidden;
   background-color: #fff;
   font-family: "ProximaNova";
@@ -21,6 +23,7 @@
     padding: 20px 10px;
   }
   .App {
+    min-height: calc(100vh - 40px);
     padding: 15px;
   }
 }

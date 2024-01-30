@@ -9,6 +9,10 @@ import Catalog from "./components/Catalog";
 import Cart from "./components/Cart";
 import NotFound from "./components/NotFound";
 import { InitializeCartItems } from "./redux/slices/cartSlice";
+<<<<<<< HEAD
+=======
+// Hi
+>>>>>>> d438e76 (Подключил git в VScode)
 
 export const AppContext = React.createContext({});
 

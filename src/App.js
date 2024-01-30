@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import Header from "./components/Header";
 import Sorting from "./components/Sorting";

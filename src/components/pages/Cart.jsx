@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { InitializeCartItems, clearItems } from "../../redux/slices/cartSlice";
+import { clearItems } from "../../redux/slices/cartSlice";
 import CartItem from "../CartItem";
 
 export default function Cart() {
   // Достаём данные из хранилища Redux
   const { cartItems, cartItemsNumber, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  // Инициализация массива корзины из данных localStorage
-  const [cartIsLoading, setCartIsLoading] = useState(true);
-  useEffect(() => {
-    setCartIsLoading(true);
-    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    if (cartItems) {
-      dispatch(InitializeCartItems(cartItems));
-    }
-    setCartIsLoading(false);
-  }, []);
 
   const [checkoutMessage, setCheckoutMessage] = useState(false);
   const [checkoutNumber, setCheckoutNumber] = useState(0);
@@ -31,10 +20,7 @@ export default function Cart() {
     setTimeout(() => setCheckoutMessage(false), 5000);
   }
 
-  return cartIsLoading ? (
-    // Во время загрузки корзины отрисовывается аглушка
-    <div className="cart_loading">Загрузка...</div>
-  ) : (
+  return (
     <div>
       {cartItems.length > 0 ? (
         <div className="cart">

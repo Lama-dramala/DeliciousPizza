@@ -20,9 +20,9 @@ export default function Sorting({ activeCategory, setActiveCategory, activeSort,
 
   // Опции
   const options = [
-    { title: "популярности", sortType: "rating", id: 1 },
-    { title: "цене", sortType: "price", id: 2 },
-    { title: "алфавиту", sortType: "name", id: 3 },
+    { title: "популярности", sortType: "rating" },
+    { title: "цене", sortType: "price" },
+    { title: "алфавиту", sortType: "name" },
   ];
 
   // Показ и скрытие popUp'а
@@ -86,7 +86,7 @@ export default function Sorting({ activeCategory, setActiveCategory, activeSort,
                       setActiveSort(option);
                       setOptionsIsActive(false);
                     }}
-                    key={option.id}
+                    key={option.sortType}
                   >
                     {option.title}
                   </li>

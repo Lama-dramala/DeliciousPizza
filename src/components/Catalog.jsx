@@ -8,6 +8,13 @@ export default function Catalog({ pizzaList, onLoad }) {
   // Достаём данные из хранилища Redux
   const searchValue = useSelector((state) => state.filter.searchValue);
 
+  // Переменная, которая по сути хранит массив актуальных для показа пицц
+  const currentPizzaList = pizzaList.filter((pizza) =>
+    pizza.name.toUpperCase().includes(searchValue.toUpperCase().trim())
+  );
+
+  // При возвращении с корзины пользователя будет всегда кидать наверх каталога,
+  // а не на ту же высоту скрола, что была в корзине
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,11 +26,8 @@ export default function Catalog({ pizzaList, onLoad }) {
         {onLoad ? (
           // До загрузки отрисовываем заглушку
           [...new Array(8)].map((_, index) => <PizzaSkeleton key={index} />)
-        ) : pizzaList.filter((pizza) => pizza.name.toUpperCase().includes(searchValue.toUpperCase().trim()))
-            .length > 0 ? (
-          pizzaList
-            .filter((pizza) => pizza.name.toUpperCase().includes(searchValue.toUpperCase().trim()))
-            .map((pizza) => <Pizza props={pizza} key={pizza.id} />)
+        ) : currentPizzaList.length > 0 ? (
+          currentPizzaList.map((pizza) => <Pizza props={pizza} key={pizza.id} />)
         ) : (
           <span className="catalog_empty"> Ничего не найдено </span>
         )}
